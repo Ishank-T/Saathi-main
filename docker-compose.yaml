@@ -25,7 +25,7 @@ services:
     #            - redis
     volumes:
       - .:/code
-    command: sh -c "/entrypoint"
+    command: sh "/entrypoint"
     environment:
       - MONGO_URI=mongodb://mongo:27017/project
       - WAIT_HOSTS=mongo:27017

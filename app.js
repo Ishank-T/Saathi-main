@@ -1,25 +1,28 @@
-var createError = require("http-errors");
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
+/* eslint-disable quotes */
+/* eslint-disable no-undef */
+/* eslint-disable max-len */
+const createError = require("http-errors");
+const express = require("express");
+const path = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
 const expressLayouts = require("express-ejs-layouts");
 require("dotenv").config();
-var indexRouter = require("./routes/index");
-
-var app = express();
+const Sentry = require("@sentry/node");
+const Tracing = require("@sentry/tracing");
+const indexRouter = require("./routes/index");
+const app = express();
 BASE_URL = process.env.BASE_URL || "project";
+const authrouter = require("./controllers/authentication.js");
 
 /* ===================== ADMIN SETUP ====================== */
 const adminRouter = require("./admin");
-let router = adminRouter();
+const router = adminRouter();
 app.use(`/${BASE_URL}/admin`, router);
 const session = require("./middlewares/express-mongo-store");
-//====================== SENTRY SETUP ===========================================
+//= ===================== SENTRY SETUP ===========================================
 
-var Sentry = require("@sentry/node");
-var Tracing = require("@sentry/tracing");
-const SENTRY_URL = process.env.SENTRY_URL;
+const { SENTRY_URL } = process.env;
 Sentry.init({
   dsn: SENTRY_URL,
   integrations: [
@@ -44,20 +47,20 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(`/${BASE_URL}`, express.static(path.join(__dirname, "public")));
+/*= ========= ROUTING SETUP : DECLARE YOURS ROUTERS INSIDE INDEXROUTER ================================= */
 
-/*========== ROUTING SETUP : DECLARE YOURS ROUTERS INSIDE INDEXROUTER =================================*/
-
+//app.use("/project/a", authrouter);
 app.get("/", (req, res) => res.redirect(`/${BASE_URL}`));
 app.use(`/${BASE_URL}`, indexRouter);
 
 // catch 404 and forward to error handler
-app.use(function (req, res, next) {
+app.use((req, res, next) => {
   next(createError(404));
 });
 
 app.use(Sentry.Handlers.errorHandler());
 // error handler
-app.use(function (err, req, res, next) {
+app.use((err, req, res, next) => {
   // set locals, only providing error in development
   res.locals.message = err.message;
   res.locals.error = req.app.get("env") === "development" ? err : {};

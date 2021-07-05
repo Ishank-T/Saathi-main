@@ -13,7 +13,7 @@ const userSchema = mongoose.Schema(
       required: true,
       minLength: 4,
     },
-    isAdmin:Boolean,
+    isAdmin: Boolean,
     fullName: {
       type: String,
     },
@@ -60,7 +60,6 @@ const userSchema = mongoose.Schema(
         type: String,
       },
     ],
-   
   },
   {
     timestamps: true,
@@ -78,7 +77,6 @@ userSchema.pre("save", async function (next) {
   next();
 });
 
-
 /* Can be used to create autb token for users */
 userSchema.methods.generateAuthToken = async function (expiry) {
   const user = this;
@@ -88,10 +86,13 @@ userSchema.methods.generateAuthToken = async function (expiry) {
   return token;
 };
 
-
 /* Following fn can be used to find user by email and pass */
-userSchema.statics.findByCredentials = async function (email, password,isAdmin=false) {
-  const user = await this.findOne({ email,isAdmin });
+userSchema.statics.findByCredentials = async function (
+  email,
+  password,
+  isAdmin = false
+) {
+  const user = await this.findOne({ email, isAdmin });
   if (!user) {
     throw new Error({
       error: {
@@ -109,7 +110,6 @@ userSchema.statics.findByCredentials = async function (email, password,isAdmin=f
     },
   });
 };
-
 
 const User = mongoose.model("User", userSchema);
 

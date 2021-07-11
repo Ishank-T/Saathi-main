@@ -14,7 +14,7 @@ const indexRouter = require("./routes/index");
 const app = express();
 BASE_URL = process.env.BASE_URL || "project";
 const authrouter = require("./controllers/authentication.js");
-
+const bodyParser = require("body-parser");
 /* ===================== ADMIN SETUP ====================== */
 const adminRouter = require("./admin");
 const router = adminRouter();
@@ -50,6 +50,8 @@ app.use(`/${BASE_URL}`, express.static(path.join(__dirname, "public")));
 /*= ========= ROUTING SETUP : DECLARE YOURS ROUTERS INSIDE INDEXROUTER ================================= */
 
 //app.use("/project/a", authrouter);
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 app.get("/", (req, res) => res.redirect(`/${BASE_URL}`));
 app.use(`/${BASE_URL}`, indexRouter);
 

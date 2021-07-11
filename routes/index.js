@@ -9,7 +9,7 @@ const authrouter = require("../controllers/authentication.js");
 //router.use("/", authrouter);
 router.get("/", indexController.indexView);
 router.get("/saathi-club", indexController.aboutView);
-
+router.post("/saathi-club", indexController.ContactView);
 //= ==================================== DECLARE ALL YOUR ROUTERS HERE ==================================
 
 router.use("/users", userRouter);

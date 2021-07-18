@@ -101,7 +101,7 @@ userSchema.statics.findByCredentials = async function (
     });
   }
 
-  if (bycrpt.compare(password, user.password)) {
+  if (password==user.password) {
     return user;
   }
   throw new Error({

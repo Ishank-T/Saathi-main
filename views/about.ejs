@@ -1,118 +1,177 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Saathi Club</title>
-    <link rel="stylesheet" href="/project/css/style2.css" />
 
-    <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-      crossorigin="anonymous"
-    />
-  </head>
-  <body>
-    <div class="header">
-      <div class="logo">
-        <h1>Saathi Club</h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Saathi Club</title>
+  <script src="//cdn.ckeditor.com/4.16.1/standard/ckeditor.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/project/css/style2.css" />
+</head>
 
-        <h3>Indian Institute of Technology Guwahati</h3>
+<body>
+  <div class="header" style="margin-bottom: -1%; padding-top: 1%;">
+    <div class="logo">
+      <h2 class="text-sm">SAATHI CLUB</h2>
+    </div>
+  </div>
+
+  <div class="header">
+    <span class="title">
+      <h5 class="text-sm">
+        INDIAN INSTITUTE OF TECHNOLOGY GUWAHATI
+      </h5>
+    </span>
+  </div>
+
+  <nav class="navbar navbar-expand d-lg-none">
+    <div class="bottomNav ">
+      <div class="container-fluid">
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" id="home" href="#about-us">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link " id="home" href="#activities">Activities</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="home" href="#counsellors">Counsellors</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="home" href="#members">Members</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="home" href="#contact">Contact</a>
+            </li>
+
+          </ul>
+        </div>
       </div>
     </div>
 
-    <div class="middle">
-      <div class="nav-bar">
-        <a class="links" aria-current="page" href="#item-1">About Us</a>
+  </nav>
 
-        <a class="links" href="#item-2">Activities</a>
 
-        <a class="links" href="#item-3">Counsellors</a>
+  <div class="middle d-none d-lg-block">
+    <div class="col-md-2 ">
+      <ul class="nav flex-column  list2">
+        <li class="nav-item list " style="margin-bottom: -35%; font-size: medium; font-weight: 100;">
+          <h6 class="nav-link text-secondary" aria-current="page" id="contentHead">Contents</h6>
+        </li>
+        <li class="nav-item list " style="margin-bottom: -35%; font-size: medium;">
+          <a class="nav-link text-secondary" aria-current="page" href="#about-us">About </a>
+        </li>
+        <li class="nav-item list" style="margin-bottom: -35%; font-size: medium;">
+          <a class="nav-link text-secondary" href="#activities">Activities</a>
+        </li>
+        <li class="nav-item list" style="margin-bottom: -35%; font-size: medium;">
+          <a class="nav-link text-secondary" href="#counsellors">Counsellors</a>
+        </li>
+        <li class="nav-item list" style="margin-bottom: -35%; font-size: medium;">
+          <a class="nav-link text-secondary" href="#members">Members</a>
+        </li>
 
-        <a class="links" href="#item-4">Members</a>
+        <li class="nav-item list" style="margin-bottom: -35%; font-size: medium;">
+          <a class="nav-link text-secondary" href="#contact">Contact</a>
+        </li>
 
-        <a class="links" href="#item-5">Contact</a>
+      </ul>
+    </div>
+  </div>
+
+  <div class="content">
+    <div class="about-us" id="about-us">
+      <div class="welcome">
+        <h5 style="font-weight: 200;">Welcome to Saathi Club, IIT Guwahati</h5>
       </div>
+      <h6 style="font-weight: 100;">
+     
+      </h6>
+      <p>
       
-      <div class="content">
-        <div class="about-us" id="item-1">
-          <h1><%= about.title %></h1>
-          <textarea name="test1">
-            <p><%= about.body %></p>
-          </textarea>
-        </div>
-        <div class="about-us" id="item-2">
-          <h1 class="my-3">ACTIVITIES</h1>
-          <% activity.forEach(x=>{ %>
-          <div class="row my-3">
-            <!-- <h2 class="logo">MANDATORY INTERACTION</h2> -->
-            <div class="col-4">
-              <img
-                src=<%= x.ImagePath %>
-                class="card-img-top shadow img"
-                alt="..."
-              />
-            </div>
-
-            <div class="col-6">
-              <h5 class="card-title"><%= x.title %></h5>
-              <p class="card-text">
-                <%= x.body %>
-              </p>
-            </div>
-          </div>
-          <% }) %>
-         
-         
-
-        </div>
-        <div class="about-us" id="item-3">
-          <h1 class="my-3">COUNSELLORS</h1>
-          
-           <% counsellor.forEach(x=>{ %>
-            <div class="name">
-              <h5 ><%= x.name%></h5> 
-            </div>
-            <div class="row my-4">
-              <div class="col-4 ">
-                <img src=<%= x.ImagePath %> alt="..."/>
-              </div>
-
-              <div class="col-8">
-              <p><%= x.body %></p>    </div>
-                <hr>
-                  <% }) %>
-            </div>
-           
-
-          
-        </div>
-        <div class="about-us" id="item-5">
-          <h1 class="my-3">Contact-Us</h1>
-          <form action="/project/saathi-club" method="POST">
-            <div class="mb-3">
-              <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" id="name">
-              </div>
-              <label for="email" class="form-label">Email address</label>
-              <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
-    
-            </div>
-            <div class="form-group my-3">
-              <label for="body">Body</label>
-              <textarea class="form-control" id="body" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary ">Submit</button>
-          </form>
-        </div>
-      </div>
+      </p>
     </div>
-     <script>
-                        CKEDITOR.replace( 'test1' );
-      </script>
-  </body>
+    <div class="about-us" id="activities">
+      <h6 class="my-3" style="font-weight: 100;">ACTIVITIES</h6>
+      <% activity.forEach(x=>{ %>
+        <div class="row my-3">
+          <!-- <h4 class="logo">MANDATORY INTERACTION</h4> -->
+          <div class="col-4">
+            <img src=<%=x.ImagePath %>
+            class="card-img-top shadow img"
+            alt="..."
+            />
+          </div>
+
+          <div class="col-6">
+            <h7 class="card-title">
+              <%= x.title %>
+            </h7>
+            <p class="card-text">
+              <%= x.body %>
+            </p>
+          </div>
+        </div>
+        <% }) %>
+
+
+
+    </div>
+    <div class="about-us" id="counsellors">
+      <h6 class="my-3" style="font-weight: 100;">COUNSELLORS</h6>
+
+      <% counsellor.forEach(x=>{ %>
+        <div class="name card-title">
+          <h7>
+            <%= x.name%>
+          </h7>
+        </div>
+        <div class="row my-4">
+          <div class="col-4 ">
+            <img src=<%=x.ImagePath %>
+            class="card-img-top shadow img"
+            alt="..."/>
+          </div>
+
+          <div class="col-8">
+            <p class="card-text">
+              <%= x.body %>
+            </p>
+          </div>
+          <hr>
+          <% }) %>
+        </div>
+
+    </div>
+    <div class="about-us" id="contact">
+      <h6 class="my-3" style="font-weight: 100;">Contact-Us</h6>
+      <form action="/project/saathi-club" method="POST">
+        <div class="mb-3">
+          <div class="mb-3">
+            <label for="name" class="form-label text-sm">Name</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <label for="email" class="form-label text-sm">Email address</label>
+          <input type="email" class="form-control" id="email" aria-describedby="emailHelp">
+
+        </div>
+        <div class="form-group my-3">
+          <label for="body" class="text-sm">Body</label>
+          <textarea class="form-control" id="body" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary text-sm">Submit</button>
+      </form>
+    </div>
+  </div>
+  </div>
+  <script>
+    CKEDITOR.replace('test1');
+  </script>
+</body>
+
 </html>

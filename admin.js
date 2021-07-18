@@ -25,18 +25,18 @@ const configureAdmin = () => {
       authenticate: async (email, pass) => {
         try {
           let admin;
-          if (process.env.NODE_ENV == "development") {
-            admin = {
-              username: "admin",
-              email: "admin@gmail.com",
-            };
-          } else {
+          // if (process.env.NODE_ENV == "development") {
+          //   admin = {
+          //     username: "admin",
+          //     email: "admin@gmail.com",
+          //   };
+          // } else {
             admin = await models.User.findByCredentials(
               email,
               pass,
               (isAdmin = true)
             );
-          }
+     
           return admin;
         } catch (err) {
           console.log(err);
